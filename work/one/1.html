@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务一</title>
+    
+</head>
+    <style>
+        .red{
+           color:red;
+        }
+        .box{
+            width:500px;
+            margin-top:20px;
+        }
+        .box1{
+            margin-top:20px; 
+        }
+    </style>
+<body>
+    <h1> 毕业生信息</h1>
+    <form action="">
+        <fieldset class="box">
+            <legend class="red">
+                学生信息
+            </legend>
+            姓&nbsp;名<input type="text" name="姓名" placeholder="请输入姓名" required="required" /><span class="red">*</span>
+            <br>
+            学&nbsp;号<input type="text" name="学号" placeholder="请输入学号" required="required" /><span class="red">*</span>
+            <br>
+            手&nbsp;机<input type="tel" name="手机" placeholder="请输入手机号" required="required" /><span class="red">*</span>
+            <br>
+            邮&nbsp;箱<input type="email" name="email" placeholder="请输入邮箱地址" required="required" /><span class="red">*</span>
+            <br>
+        </fieldset>
+
+        <fieldset class="box">
+            <legend class="red">
+                录取情况
+            </legend>
+            录取学校<input type="text" />
+            <br>
+            入学成绩<input type="text" />
+            <br>
+            入学时间<input type="date" name="datedemo" />
+            <br>
+        </fieldset>
+        <input class="box1" type="submit" value="提交" />
+    </form>
+
+    
+</body>
+
+</html>
