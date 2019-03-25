@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>web存储</title>
+</head>
+<style>
+    #history {
+        width: 200px;
+
+    }
+
+    #shanchu {
+        position: absolute;
+        left: 210px;
+        top: 85px;
+        display: none;
+    }
+    #zxc {
+        height: 20px;
+        background-color: grey;
+        margin-right: 10px;
+        margin-bottom:5px;
+        float: left;
+
+    }
+</style>
+
+<body>
+    <input id="memo" type="text" name="搜索框" placeholder="请输入想查找的商品">
+    <input type="button" value="搜索" onclick="saveStorage('memo');">
+    
+    <br>
+    <p>最近搜索</p>
+
+    <div id="history">
+
+    </div>
+    <button id="shanchu" onclick="clearStorage('history')">X</button>
+    
+    <script type="text/javascript">
+        var shanchu = document.getElementById('shanchu');
+        function saveStorage(id) {
+            var data = document.getElementById(id).value;
+            var time = new Date().getTime();
+            localStorage.setItem(time, data);
+            loadStorage('history');
+            shanchu.style.display = 'block';   
+        }
+
+
+        function loadStorage(id) {
+            var result = '<div id="history">';
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                result += '<div id="zxc">' + value+'</div>';
+            }
+            result += '</div>';
+            var target = document.getElementById(id);
+            target.innerHTML = result;
+        }
+
+
+        function clearStorage() {
+            localStorage.clear();
+            loadStorage('history');
+            shanchu.style.display = 'none';   
+        }
+    </script>
+</body>
+
+</html>
