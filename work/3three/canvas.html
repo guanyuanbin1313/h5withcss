@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮卡</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="150"></canvas>
+    <script>
+        var x = document.getElementById("canvas");
+        var context = x.getContext("2d");
+
+        var img = new Image();
+
+        var str = "img/";
+        var nums = "233441111111111111111111111111";
+        var num = nums.charAt(parseInt(Math.random() * 30));
+
+        x.style.backgroundImage = 'url("' + str + num + '.png' + '")';
+        x.style.width = "300px";
+        x.style.height = "150px";
+        context.fillStyle = "#ccc";
+        context.globalCompositeOperation = "destination-over";
+        context.beginPath();
+        context.fillRect(0, 0, 300, 150);
+        context.closePath();
+       
+        x.onmousedown = function  (){
+            x.onmousemove=function(e){
+            var a = e.pageX - x.offsetLeft;
+            var b = e.pageY - x.offsetTop;
+            context.globalCompositeOperation = "destination-out";
+            context.beginPath();
+            context.arc(a, b, 10, 0, 2 * Math.PI, true);
+            context.fill();
+            context.closePath();
+            }
+        }
+        x.onmouseup=function(){
+            x.onmousemove=function(){
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
